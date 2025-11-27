@@ -17,7 +17,7 @@ Neon Havoc es un bullet heaven ambientado en Neo-Santiago 2087. Controla a Mateo
 ## 🎮 Jugar Ahora
 
 **🌐 Demo Online (Web):**  
-[Jugar Neon Havoc en el navegador](https://sauk1346.github.io/codigo-neon-havoc/)
+[Jugar Neon Havoc en el navegador](https://sauk1346.github.io/neon-havoc/)
 
 **Requisitos:**
 - Navegador moderno (Chrome, Firefox, Edge)
