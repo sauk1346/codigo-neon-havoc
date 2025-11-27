@@ -1,19 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://cyy62f7jvxdqc"]
 
-[ext_resource type="Texture2D" uid="uid://dwx0ho62ng8hv" path="res://player.png" id="1_a1mj6"]
+[ext_resource type="SpriteFrames" path="res://player_sprite_frames.tres" id="1_frames"]
 [ext_resource type="Script" uid="uid://bulagaswnlr7i" path="res://mateo.gd" id="1_wo7mv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wo7mv"]
-size = Vector2(40, 40)
+size = Vector2(50, 70)
 
 [node name="Mateo" type="CharacterBody2D"]
 z_index = 5
 collision_mask = 2
 script = ExtResource("1_wo7mv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, 16)
-texture = ExtResource("1_a1mj6")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_frames")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wo7mv")

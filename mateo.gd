@@ -13,11 +13,59 @@ func _physics_process(delta):
 	move_and_slide()
 
 	# Limitar el movimiento del jugador a los límites de la pantalla
-	position.x = clamp(position.x, 0, 1280)
-	position.y = clamp(position.y, 0, 720)
+	position.x = clamp(position.x, 0, 2816)
+	position.y = clamp(position.y, 0, 1536)
 
-	if direction.x != 0:
-		$Sprite2D.flip_h = direction.x < 0
+	# Control de animaciones con 8 direcciones
+	var anim_sprite = $AnimatedSprite2D
+
+	if direction.length() > 0:
+		var new_anim = get_animation_from_direction(direction)
+		if anim_sprite.animation != new_anim:
+			anim_sprite.play(new_anim)
+	else:
+		# Si está quieto, reproducir animación idle
+		if anim_sprite.animation != "idle":
+			anim_sprite.play("idle")
+
+func get_animation_from_direction(dir: Vector2) -> String:
+	# Normalizar dirección y calcular ángulo
+	var angle = dir.angle()
+	var anim_sprite = $AnimatedSprite2D
+
+	# Resetear flip
+	anim_sprite.flip_h = false
+
+	# Convertir ángulo a grados para facilitar lectura
+	var degrees = rad_to_deg(angle)
+
+	# Determinar animación basada en el ángulo (8 direcciones)
+	# Right: -22.5 a 22.5 grados
+	if degrees >= -22.5 and degrees < 22.5:
+		return "walk_right"
+	# Down-Right: 22.5 a 67.5 grados
+	elif degrees >= 22.5 and degrees < 67.5:
+		return "walk_down_right"
+	# Down: 67.5 a 112.5 grados
+	elif degrees >= 67.5 and degrees < 112.5:
+		return "walk_down"
+	# Down-Left: 112.5 a 157.5 grados
+	elif degrees >= 112.5 and degrees < 157.5:
+		return "walk_down_left"
+	# Left: 157.5 a -157.5 grados (±180)
+	elif degrees >= 157.5 or degrees < -157.5:
+		return "walk_left"
+	# Up-Left: -157.5 a -112.5 grados
+	elif degrees >= -157.5 and degrees < -112.5:
+		return "walk_up_left"
+	# Up: -112.5 a -67.5 grados
+	elif degrees >= -112.5 and degrees < -67.5:
+		return "walk_up"
+	# Up-Right: -67.5 a -22.5 grados
+	else: # degrees >= -67.5 and degrees < -22.5
+		# No tenemos walk_up_right, usamos walk_up_left volteado
+		anim_sprite.flip_h = true
+		return "walk_up_left"
 
 func _on_fire_timer_timeout():
 	var enemies = get_tree().get_nodes_in_group("enemy")

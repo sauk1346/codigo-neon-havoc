@@ -4,18 +4,18 @@
 [ext_resource type="Script" uid="uid://cgim0fea3l5k0" path="res://nivel.gd" id="1_vttml"]
 [ext_resource type="PackedScene" uid="uid://dv1lnauqlnf81" path="res://drone_paco.tscn" id="2_j87l1"]
 [ext_resource type="PackedScene" uid="uid://cyy62f7jvxdqc" path="res://mateo.tscn" id="3_ymy7k"]
-[ext_resource type="Texture2D" uid="uid://lk4igkvs8jhf" path="res://background.jpg" id="7_6apml"]
+[ext_resource type="Texture2D" uid="uid://c8yay001a2b3c" path="res://assets/level01.png" id="7_6apml"]
 
 [node name="Nivel" type="Node2D" groups=["nivel"]]
 script = ExtResource("1_vttml")
 enemy_scene = ExtResource("2_j87l1")
 
 [node name="Fondo" type="Sprite2D" parent="."]
-position = Vector2(640, 360)
+position = Vector2(1408, 768)
 texture = ExtResource("7_6apml")
 
 [node name="Mateo" parent="." groups=["player"] instance=ExtResource("3_ymy7k")]
-position = Vector2(640, 360)
+position = Vector2(1408, 768)
 bala_scene = ExtResource("1_7gdj4")
 
 [node name="SpawnerTimer" type="Timer" parent="."]

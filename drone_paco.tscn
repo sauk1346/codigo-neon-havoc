@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dv1lnauqlnf81"]
 
 [ext_resource type="Script" path="res://drone_paco.gd" id="1_drone_script"]
-[ext_resource type="Texture2D" uid="uid://du8wxnv6l2bc7" path="res://enemy.png" id="1_5pvb2"]
+[ext_resource type="SpriteFrames" path="res://enemy_sprite_frames.tres" id="1_enemy_frames"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drone"]
-size = Vector2(32, 32)
+size = Vector2(60, 50)
 
 [node name="DronePaco" type="CharacterBody2D"]
 collision_layer = 2
@@ -12,8 +12,10 @@ collision_mask = 1
 z_index = 5
 script = ExtResource("1_drone_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_5pvb2")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_enemy_frames")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_drone")

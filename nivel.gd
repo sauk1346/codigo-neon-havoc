@@ -40,19 +40,19 @@ func update_kills_display():
 
 func _on_spawner_timer_timeout():
 	var enemy = enemy_scene.instantiate()
-	# Spawn en los bordes del mapa (1280x720)
+	# Spawn en los bordes del mapa (2816x1536)
 	var spawn_side = randi() % 4 # 0=arriba, 1=abajo, 2=izquierda, 3=derecha
 	var spawn_pos = Vector2.ZERO
 
 	match spawn_side:
 		0: # Arriba
-			spawn_pos = Vector2(randf_range(50, 1230), randf_range(-50, 50))
+			spawn_pos = Vector2(randf_range(50, 2766), randf_range(-50, 50))
 		1: # Abajo
-			spawn_pos = Vector2(randf_range(50, 1230), randf_range(670, 770))
+			spawn_pos = Vector2(randf_range(50, 2766), randf_range(1486, 1586))
 		2: # Izquierda
-			spawn_pos = Vector2(randf_range(-50, 50), randf_range(50, 670))
+			spawn_pos = Vector2(randf_range(-50, 50), randf_range(50, 1486))
 		3: # Derecha
-			spawn_pos = Vector2(randf_range(1230, 1330), randf_range(50, 670))
+			spawn_pos = Vector2(randf_range(2766, 2866), randf_range(50, 1486))
 
 	enemy.position = spawn_pos
 	enemy.add_to_group("enemy")  # ¡CRÍTICO! Agregar al grupo "enemy"

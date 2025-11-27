@@ -14,3 +14,10 @@ config/name="codigo_neon_havoc"
 run/main_scene="uid://so6wak315t71"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=2816
+window/size/viewport_height=1536
+window/size/mode=2
+window/stretch/mode="canvas_items"
