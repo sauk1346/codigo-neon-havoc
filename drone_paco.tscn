@@ -1,21 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv1lnauqlnf81"]
+[gd_scene load_steps=7 format=3 uid="uid://dv1lnauqlnf81"]
 
 [ext_resource type="Script" path="res://drone_paco.gd" id="1_drone_script"]
 [ext_resource type="SpriteFrames" path="res://enemy_sprite_frames.tres" id="1_enemy_frames"]
+[ext_resource type="PackedScene" path="res://explosion.tscn" id="3_explosion"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drone"]
 size = Vector2(60, 50)
+
+[sub_resource type="Gradient" id="Gradient_enemylight"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_enemylight"]
+gradient = SubResource("Gradient_enemylight")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1.0)
 
 [node name="DronePaco" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 1
 z_index = 5
 script = ExtResource("1_drone_script")
+explosion_scene = ExtResource("3_explosion")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(12, 35)
+modulate = Color(0, 0, 0, 0.35)
+scale = Vector2(0.7, 0.25)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_enemy_frames")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="EnemyLight" type="PointLight2D" parent="."]
+color = Color(1, 0.3, 0.2, 1)
+energy = 0.6
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_enemylight")
+texture_scale = 1.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_drone")

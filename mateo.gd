@@ -120,7 +120,6 @@ func die():
 	# Feedback visual: fade a negro
 	modulate = Color(0.3, 0.3, 0.3)
 
-	# Esperar un momento antes de reiniciar
-	await get_tree().create_timer(1.0).timeout
-	# Usar cambio de escena explícito (más robusto que reload)
-	get_tree().change_scene_to_file("res://nivel.tscn")
+	# Esperar un momento antes de volver al menú
+	await get_tree().create_timer(1.5).timeout
+	get_tree().change_scene_to_file("res://menu.tscn")

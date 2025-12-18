@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://so6wak315t71"]
+[gd_scene load_steps=13 format=3 uid="uid://nivel2scene001"]
 
 [ext_resource type="PackedScene" uid="uid://gyqvsuirh7wl" path="res://bala.tscn" id="1_7gdj4"]
 [ext_resource type="Script" uid="uid://cgim0fea3l5k0" path="res://nivel.gd" id="1_vttml"]
 [ext_resource type="PackedScene" uid="uid://dv1lnauqlnf81" path="res://drone_paco.tscn" id="2_j87l1"]
 [ext_resource type="PackedScene" uid="uid://cyy62f7jvxdqc" path="res://mateo.tscn" id="3_ymy7k"]
-[ext_resource type="Texture2D" uid="uid://c8yay001a2b3c" path="res://assets/level01.png" id="7_6apml"]
+[ext_resource type="Texture2D" path="res://assets/level02.png" id="7_level02"]
 [ext_resource type="Shader" uid="uid://deiwmhy5pqxpl" path="res://floor_normal_shader.gdshader" id="8_shader"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_floor"]
@@ -44,43 +44,44 @@ scale_min = 0.8
 scale_max = 1.2
 color = Color(0.7, 0.8, 1, 0.5)
 
-[node name="Nivel" type="Node2D" groups=["nivel"]]
+[node name="Nivel2" type="Node2D" groups=["nivel"]]
 script = ExtResource("1_vttml")
 enemy_scene = ExtResource("2_j87l1")
 
 [node name="Fondo" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_floor")
 position = Vector2(1408, 768)
-texture = ExtResource("7_6apml")
+scale = Vector2(2.0, 2.087)
+texture = ExtResource("7_level02")
 
 [node name="NeonLight1" type="PointLight2D" parent="."]
-position = Vector2(600, 400)
-color = Color(1, 0.2, 0.5, 1)
-energy = 0.8
+position = Vector2(500, 350)
+color = Color(0.2, 1, 0.8, 1)
+energy = 0.9
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_light")
-texture_scale = 3.0
+texture_scale = 3.5
 
 [node name="NeonLight2" type="PointLight2D" parent="."]
-position = Vector2(2200, 500)
-color = Color(0.2, 0.8, 1, 1)
-energy = 0.8
+position = Vector2(2300, 450)
+color = Color(1, 0.5, 0.2, 1)
+energy = 0.85
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_light")
 texture_scale = 3.0
 
 [node name="NeonLight3" type="PointLight2D" parent="."]
-position = Vector2(1400, 1200)
-color = Color(0.8, 0.2, 1, 1)
-energy = 0.6
+position = Vector2(1400, 1100)
+color = Color(0.3, 0.5, 1, 1)
+energy = 0.7
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_light")
-texture_scale = 2.5
+texture_scale = 2.8
 
 [node name="NeonLight4" type="PointLight2D" parent="."]
-position = Vector2(426, 1030)
-color = Color(0.2, 1, 0.5, 1)
-energy = 0.7
+position = Vector2(350, 1100)
+color = Color(1, 0.3, 0.8, 1)
+energy = 0.75
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_light")
 texture_scale = 2.5
@@ -100,7 +101,7 @@ position = Vector2(1408, 768)
 bala_scene = ExtResource("1_7gdj4")
 
 [node name="SpawnerTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 autostart = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]

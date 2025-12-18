@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2ix1s6ct8ujg"]
+
+[ext_resource type="Script" uid="uid://q5fd46jhfd8w" path="res://select.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://3hodqv1vfam4" path="res://assets/select01.png" id="2_select01"]
+[ext_resource type="Texture2D" uid="uid://brqc3bb6puqc8" path="res://assets/select02.png" id="3_select02"]
+[ext_resource type="Texture2D" uid="uid://dedesnje7h6nr" path="res://assets/select03.png" id="4_select03"]
+
+[node name="Select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_select01")
+expand_mode = 1
+
+[node name="Level1Highlight" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -691.0
+offset_top = 15.0
+offset_right = 861.0
+offset_bottom = 1430.0
+grow_horizontal = 2
+texture = ExtResource("3_select02")
+stretch_mode = 5
+
+[node name="Level2Highlight" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -672.0
+offset_top = -1442.0
+offset_right = 811.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_select03")
+stretch_mode = 5
+
+[node name="FlickerTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="FlickerTimer" to="." method="_on_flicker_timer_timeout"]

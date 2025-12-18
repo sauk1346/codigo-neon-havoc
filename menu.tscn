@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://8yw2w57afogm"]
+
+[ext_resource type="Script" uid="uid://dd6jxr6f06pr5" path="res://menu.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://6xoaua6udar7" path="res://assets/intro01.png" id="2_intro01"]
+[ext_resource type="Texture2D" uid="uid://bpmpe0f4ajck5" path="res://assets/intro02.png" id="3_intro02"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2816.0
+offset_bottom = 1536.0
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 2816.0
+offset_bottom = 1536.0
+texture = ExtResource("2_intro01")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Letters" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 2816.0
+offset_bottom = 1536.0
+texture = ExtResource("3_intro02")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FlickerTimer" type="Timer" parent="."]
+wait_time = 0.15
+autostart = true
+
+[connection signal="timeout" from="FlickerTimer" to="." method="_on_flicker_timer_timeout"]

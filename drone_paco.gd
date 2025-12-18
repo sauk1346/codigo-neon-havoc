@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
+@export var explosion_scene: PackedScene
+
 var speed = 100
 var damage = 10
-var health = 3  
+var health = 3
 var player_ref = null
 
 func _ready():
@@ -21,6 +23,12 @@ func take_damage(amount):
 		var nivel = get_tree().get_first_node_in_group("nivel")
 		if nivel and nivel.has_method("add_kill"):
 			nivel.add_kill()
+
+		# Generar explosión
+		if explosion_scene:
+			var explosion = explosion_scene.instantiate()
+			explosion.global_position = global_position
+			get_tree().root.add_child(explosion)
 
 		queue_free()
 
