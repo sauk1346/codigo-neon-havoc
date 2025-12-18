@@ -54,7 +54,7 @@ func _physics_process(delta):
 			# Si chocamos con alguien del grupo "player"
 			if collider.is_in_group("player"):
 				if collider.has_method("take_damage"):
-					collider.take_damage(damage)
+					collider.take_damage(global_position)
 
 func get_animation_from_direction(dir: Vector2) -> String:
 	# Normalizar dirección y calcular ángulo
